@@ -6,39 +6,11 @@
 /*   By: andefern <andefern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 13:31:41 by andefern          #+#    #+#             */
-/*   Updated: 2023/06/20 14:08:04 by andefern         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:25:17 by andefern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-int	ft_toupper(int c)
-{
-	if ((c >= 'A') && (c <= 'Z'))
-	{
-		return (c);
-	}
-	else if ((c >= 'a') && (c <= 'z'))
-	{
-		return (c - 32);
-	}
-	return (c);
-}
-
-int	ft_tolower(int c)
-{
-	if ((c >= 'a') && (c <= 'z'))
-	{
-		return (c);
-	}
-	else if ((c >= 'A') && (c <= 'Z'))
-	{
-		return (c + 32);
-	}
-	return (c);
-}
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -57,15 +29,49 @@ int	ft_retstr(char *str)
 	i = 0;
 	if (!str)
 		return (write(1, "(null)", 6));
-	while (str)
+	while (str[i])
 	{
-		if (str[i] != '\0')
-		{
-			write(1, &str[i], 1);
-			i++;
-		}
-		else
-			write(1, "(null)", 6);
+		write(1, &str[i], 1);
+		i++;
 	}
+	return (i);
+}
+
+int	ft_uputnbr(unsigned int n)
+{
+	long		nb;
+	int			printed;
+
+	printed = 0;
+	nb = n;
+	if (nb > 9)
+	{
+		printed += ft_uputnbr((nb / 10));
+		printed += ft_uputnbr((nb % 10));
+	}
+	else
+	{
+		nb = nb + '0';
+		printed += write(1, &nb, 1);
+	}
+	return (printed);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	ft_hex(unsigned long n, int up_or_low)
+{
+	int	i;
+
+	i = 0;
+	if (n > 15)
+		i += ft_hex (n / 16, up_or_low);
+	if (up_or_low == 0)
+		i += write (1, &"0123456789abcdef"[(n % 16)], 1);
+	if (up_or_low == 1)
+		i += write (1, &"0123456789ABCDEF"[(n % 16)], 1);
 	return (i);
 }
