@@ -6,7 +6,7 @@
 /*   By: andefern <andefern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:14 by andefern          #+#    #+#             */
-/*   Updated: 2023/06/20 17:27:25 by andefern         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:29:34 by andefern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,4 @@ int	ft_printf(const char *print, ...)
 	}
 	va_end(things);
 	return (p);
-
-}
-
-int	main(void)
-{
-	char *str="HOLA";
-	//printf ("[%d]", 34);	
-	printf("IMPRESOS: %i\n", ft_printf ("HACENDADO[%p]pipastijuana %i\n", str, ft_uputnbr(154562)));
-	printf("IMPRESOS: %i\n", printf ("ORIGINAL [%p]pipastijuana %i\n", str, ft_uputnbr(154562)));
 }

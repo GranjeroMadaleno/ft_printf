@@ -3,7 +3,7 @@ NAME = libftprintf.a
 
 # FLAGS DE COMPILACION #
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 AR = ar rc
 RM = /bin/rm -rf
 
