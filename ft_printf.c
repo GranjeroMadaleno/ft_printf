@@ -6,7 +6,7 @@
 /*   By: andefern <andefern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:14 by andefern          #+#    #+#             */
-/*   Updated: 2023/06/20 17:29:34 by andefern         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:23:28 by andefern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,6 @@ int	ft_support(va_list things, char c)
 		ft_putchar(va_arg(things, unsigned int));
 		return (1);
 	}
-	else if (c == 'x')
-		return (ft_hex(va_arg(things, unsigned int), 0));
-	else if (c == 'X')
-		return (ft_hex(va_arg(things, unsigned int), 1));
-	else if (c == 'd')
-		return (ft_putnbr(va_arg(things, int)));
-	else if (c == 'i')
-		return (ft_putnbr(va_arg(things, int)));
-	else if (c == '%')
-		return (write(1, "%", 1));
-	else if (c == 'u')
-		return (ft_uputnbr(va_arg(things, unsigned int)));
 	else if (c == 's')
 		return (ft_retstr(va_arg(things, char *)));
 	else if (c == 'p')
@@ -38,6 +26,18 @@ int	ft_support(va_list things, char c)
 		write(1, "0x", 2);
 		return (ft_hex(va_arg(things, unsigned long), 0) + 2);
 	}
+	else if (c == 'd')
+		return (ft_putnbr(va_arg(things, int)));
+	else if (c == 'i')
+		return (ft_putnbr(va_arg(things, int)));
+	else if (c == 'u')
+		return (ft_uputnbr(va_arg(things, unsigned int)));
+	else if (c == 'x')
+		return (ft_hex(va_arg(things, unsigned int), 0));
+	else if (c == 'X')
+		return (ft_hex(va_arg(things, unsigned int), 1));
+	else if (c == '%')
+		return (write(1, "%", 1));
 	return (0);
 }
 
@@ -67,3 +67,11 @@ int	ft_printf(const char *print, ...)
 	va_end(things);
 	return (p);
 }
+
+// int main(void)
+// {
+// 	int a;
+// 	a = -2147483648;
+// 	printf("%d\n", a);
+// 	ft_printf("%d", a);
+// }

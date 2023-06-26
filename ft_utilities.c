@@ -6,7 +6,7 @@
 /*   By: andefern <andefern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:15:58 by andefern          #+#    #+#             */
-/*   Updated: 2023/06/20 17:58:13 by andefern         ###   ########.fr       */
+/*   Updated: 2023/06/26 13:27:02 by andefern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_putnbr(int n)
 	nb = n;
 	if (nb == -2147483648)
 	{
-		printed += write(1, "-2147483648", 11);
+		return (write(1, "-2147483648", 11));
 	}
 	if (nb < 0)
 	{
@@ -31,7 +31,7 @@ int	ft_putnbr(int n)
 	if (nb > 9)
 	{
 		printed += ft_putnbr((nb / 10));
-		printed += ft_putnbr((nb % 10 + '0'));
+		printed += ft_putnbr((nb % 10));
 	}
 	else
 	{
