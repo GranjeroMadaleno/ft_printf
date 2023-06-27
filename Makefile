@@ -8,8 +8,8 @@ AR = ar rc
 RM = /bin/rm -rf
 
 # ARCHIVOS #
-SRC =	ft_utilities.c \
-		ft_utilities2.c \
+SRC =	ft_utils.c \
+		ft_utils2.c \
 		ft_printf.c
 
 

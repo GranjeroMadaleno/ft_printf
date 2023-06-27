@@ -6,7 +6,7 @@
 /*   By: andefern <andefern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:14 by andefern          #+#    #+#             */
-/*   Updated: 2023/06/26 15:23:28 by andefern         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:40:39 by andefern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ int	ft_printf(const char *print, ...)
 	va_start(things, print);
 	i = 0;
 	p = 0;
+	if (ft_strlen(print) == 1 && print[i] == '%')
+		return (p);
 	while (print[i])
 	{
-		if (print[i] == '%')
+		if (print[i] == '%' && print[i + 1])
 		{
 			p += ft_support(things, print[i + 1]);
 			i++;
@@ -68,10 +70,12 @@ int	ft_printf(const char *print, ...)
 	return (p);
 }
 
-// int main(void)
-// {
-// 	int a;
-// 	a = -2147483648;
-// 	printf("%d\n", a);
-// 	ft_printf("%d", a);
-// }
+/* int	main(void)
+{
+	int	a;
+
+	a = 214748;
+	printf("%d\n", a);
+	ft_printf("%d", a);
+}
+ */
